@@ -20,5 +20,9 @@
 			"i18n"
 		]
 	},
+	"config": {
+		"@doc": "https://www.mediawiki.org/wiki/Extension:Ids",
+		"IdsEndpoint": "https://tools.wmflabs.org/idsgen/"
+	},
 	"manifest_version": 1
 }

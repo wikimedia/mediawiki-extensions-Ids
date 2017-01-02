@@ -1,9 +1,9 @@
 <?php
+
 /*
  * @author Shoichi Chou ( shoichi.chou@gmail.com )
+ * @author David Sn ( divad.nnamtdeis@gmail.com )
  */
-
-// 0614-2016 change server to https://tools.wmflabs.org/idsgen/
 class IDS {
 	static function onParserInit( Parser $parser ) {
 		$parser->setHook( 'ids', [ __CLASS__, 'idsRender' ] );
@@ -21,9 +21,13 @@ class IDS {
 	 * @see https://www.mediawiki.org/wiki/Manual:Tag_extensions
 	 */
 	static function idsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
+		// Get configured web service endpoint (T1540435)
+		$config = RequestContext::getMain()->getConfig();
+		$endpoint = $config->get( 'IdsEndpoint' );
+
 		// Support for Simplified "體" (font)
 		$font = isset($args['font']) ? strtr($args['font'] , '体', '體') : '宋體';
-		$src = 'https://tools.wmflabs.org/idsgen/' . rawurlencode($input) . '.svg?字體=' . rawurlencode($font);
+		$src = $endpoint . rawurlencode($input) . '.svg?字體=' . rawurlencode($font);
 
 		return Html::element('img', [
 			'align' => 'middle',
