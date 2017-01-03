@@ -1,9 +1,9 @@
 <?php
+/**
+* @author Shoichi Chou <shoichi.chou@gmail.com>
+* @author David Sn <divad.nnamtdeis@gmail.com>
+*/
 
-/*
- * @author Shoichi Chou ( shoichi.chou@gmail.com )
- * @author David Sn ( divad.nnamtdeis@gmail.com )
- */
 class IDS {
 	static function onParserInit( Parser $parser ) {
 		$parser->setHook( 'ids', [ __CLASS__, 'idsRender' ] );
@@ -26,10 +26,10 @@ class IDS {
 		$endpoint = $config->get( 'IdsEndpoint' );
 
 		// Support for Simplified "體" (font)
-		$font = isset($args['font']) ? strtr($args['font'] , '体', '體') : '宋體';
+		$font = isset ( $args['font'] ) ? strtr( $args['font'], '体', '體' ) : '宋體';
 		$src = $endpoint . rawurlencode($input) . '.svg?字體=' . rawurlencode($font);
 
-		return Html::element('img', [
+		return Html::element( 'img', [
 			'align' => 'middle',
 			'class' => 'ids-char',  // helps with custom styling
 			'alt' => $input,
