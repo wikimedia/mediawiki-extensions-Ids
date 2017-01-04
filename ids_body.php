@@ -27,7 +27,8 @@ class IDS {
 
 		// Support for Simplified "體" (font)
 		$font = isset ( $args['font'] ) ? strtr( $args['font'], '体', '體' ) : '宋體';
-		$src = $endpoint . rawurlencode($input) . '.svg?字體=' . rawurlencode($font);
+		$src = $endpoint . rawurlencode( $input )
+			. '.svg?字體=' . rawurlencode( $font );
 
 		return Html::element( 'img', [
 			'align' => 'middle',
@@ -36,6 +37,6 @@ class IDS {
 			'src' => $src,
 			'onerror' => 'this.src = this.src.replace(".svg?字體=", ".png?字體=")',  // png fallback
 			'style' => 'height: 1em; width: 1em; vertical-align: middle; margin: 0.4em 0px 0.7em;'
-		]);
+		] );
 	}
 }
