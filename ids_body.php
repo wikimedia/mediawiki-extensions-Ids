@@ -26,7 +26,7 @@ class IDS {
 		$endpoint = $config->get( 'IdsEndpoint' );
 
 		// Support for Simplified "體" (font)
-		$font = isset ( $args['font'] ) ? strtr( $args['font'], '体', '體' ) : '宋體';
+		$font = isset( $args['font'] ) ? strtr( $args['font'], '体', '體' ) : '宋體';
 		$src = $endpoint . rawurlencode( $input )
 			. '.svg?字體=' . rawurlencode( $font );
 
