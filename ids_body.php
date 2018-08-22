@@ -1,15 +1,19 @@
 <?php
 /**
-* @author Shoichi Chou <shoichi.chou@gmail.com>
-* @author David Sn <divad.nnamtdeis@gmail.com>
-*/
+ * @author Shoichi Chou <shoichi.chou@gmail.com>
+ * @author David Sn <divad.nnamtdeis@gmail.com>
+ */
 
 class IDS {
-	static function onParserInit( Parser $parser ) {
+	/**
+	 * Register the parser function
+	 * @param Parser $parser
+	 */
+	public static function onParserInit( Parser $parser ) {
 		$parser->setHook( 'ids', [ __CLASS__, 'idsRender' ] );
-		return true;
 	}
-	/*
+
+	/**
 	 * This method handles IDS tags.
 	 *
 	 * <ids>⿰電心</ids> ->
@@ -19,8 +23,13 @@ class IDS {
 	 * 	<img align=middle class="ids-char" src="https://tools.wmflabs.org/idsgen/⿰電心.svg?字體=楷體粗體" ...>
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Tag_extensions
+	 * @param string $input
+	 * @param array $args
+	 * @param Parser $parser
+	 * @param PPFrame $frame
+	 * @return string
 	 */
-	static function idsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
+	public static function idsRender( $input, array $args, Parser $parser, PPFrame $frame ) {
 		// Get configured web service endpoint (T1540435)
 		$config = RequestContext::getMain()->getConfig();
 		$endpoint = $config->get( 'IdsEndpoint' );
