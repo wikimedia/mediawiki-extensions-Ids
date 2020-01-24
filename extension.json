@@ -5,6 +5,9 @@
 	"author": [
 		"MGdesigner (Shoichi Chou)"
 	],
+	"requires": {
+		"MediaWiki": ">= 1.29.0"
+	},
 	"url": "https://www.mediawiki.org/wiki/Extension:Ids",
 	"descriptionmsg": "ids-desc",
 	"type": "parserhook",
@@ -21,8 +24,9 @@
 		]
 	},
 	"config": {
-		"@doc": "https://www.mediawiki.org/wiki/Extension:Ids",
-		"IdsEndpoint": "https://tools.wmflabs.org/idsgen/"
+		"IdsEndpoint": {
+			"value": "https://tools.wmflabs.org/idsgen/"
+		}
 	},
-	"manifest_version": 1
+	"manifest_version": 2
 }
